@@ -27,7 +27,8 @@ namespace Identity.Api
 
             services
                 .AddIdentityServer()                
-                .AddDeveloperSigningCredential();
+                .AddDeveloperSigningCredential()
+                .AddInMemoryApiResources(IdentityServerConfig.GetApiResources());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
