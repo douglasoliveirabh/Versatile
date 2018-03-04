@@ -3,7 +3,27 @@
     // Use hover for the description of the existing attributes
     // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [        
+        {           
+            "name": "Angular Launch Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200",
+            "sourceMaps": true,
+            "trace": true,
+            "webRoot": "${workspaceRoot}/src/Web/WebPwa/WebPwaApp/src/index.html",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome-dev-profile",
+            "sourceMapPathOverrides": {
+                "webpack:///C:*":"C:/*"
+            }
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}"
+        },
         {
             "name": "Identity Api",
             "type": "coreclr",
@@ -47,7 +67,7 @@
             "cwd": "${workspaceFolder}/src/Services/Person/Person.Api",
             "stopAtEntry": false,
             "launchBrowser": {
-                "enabled": true,
+                "enabled": false,
                 "args": "${auto-detect-url}",
                 "windows": {
                     "command": "cmd.exe",
@@ -80,7 +100,9 @@
             "name": "Debug All Apps",
             "configurations": [
                 "Identity Api",
-                "Person Api"
+                "Person Api",
+                "Angular Launch Chrome",
+                //"Angular Attach to Chrome"
             ]
         }
     ]
